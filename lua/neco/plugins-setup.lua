@@ -1,14 +1,14 @@
--- setup the packer.nvim 
+-- setup the packer.nvim
 
 local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
+	local fn = vim.fn
+	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+	if fn.empty(fn.glob(install_path)) > 0 then
+		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+		vim.cmd([[packadd packer.nvim]])
+		return true
+	end
+	return false
 end
 
 local packer_bootstrap = ensure_packer()
@@ -20,71 +20,77 @@ vim.cmd([[
   augroup end
 ]])
 
-local status , packer = pcall(require , "packer")
+local status, packer = pcall(require, "packer")
 
-if not status then return end
+if not status then
+	return
+end
 
 return packer.startup(function(use)
-  -- which plugins wants to install add between 2 comments
-  -- packer can manage itself
-  use("wbthomason/packer.nvim")
-  
-  use("nvim-treesitter/nvim-treesitter")
+	-- which plugins wants to install add between 2 comments
+	-- packer can manage itself
+	use("wbthomason/packer.nvim")
 
-  use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
+	use("kdheepak/lazygit.nvim")
 
-  use("bluz71/vim-nightfly-guicolors") -- preferred colorscheme
+	use("nvim-treesitter/nvim-treesitter")
 
-  use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
+	use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
 
-  use("szw/vim-maximizer") -- maximizes and restores current window
+	use("romgrk/barbar.nvim")
 
-  -- essential plugins
-  use("tpope/vim-surround") -- add, delete, change surroundings (it's awesome)
-  use("inkarkat/vim-ReplaceWithRegister") -- replace with register contents using motion (gr + motion)
+	use("bluz71/vim-nightfly-guicolors") -- preferred colorscheme
 
-  -- commenting with gc
-  use("numToStr/Comment.nvim")
+	use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
 
-  -- file explorer
-  use("nvim-tree/nvim-tree.lua")
+	use("szw/vim-maximizer") -- maximizes and restores current window
 
-  -- vs-code like icons
-  use("nvim-tree/nvim-web-devicons")
+	-- essential plugins
+	use("tpope/vim-surround") -- add, delete, change surroundings (it's awesome)
+	use("inkarkat/vim-ReplaceWithRegister") -- replace with register contents using motion (gr + motion)
 
-  -- statusline
-  use("nvim-lualine/lualine.nvim")
+	-- commenting with gc
+	use("numToStr/Comment.nvim")
 
-  -- fuzzy finding w/ telescope
-  use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependency for better sorting performance
-  use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" }) -- fuzzy finder
+	-- file explorer
+	use("nvim-tree/nvim-tree.lua")
 
-  -- autocompletion
-  use("hrsh7th/nvim-cmp") -- completion plugin
-  use("hrsh7th/cmp-buffer") -- source for text in buffer
-  use("hrsh7th/cmp-path") -- source for file system paths
+	-- vs-code like icons
+	use("nvim-tree/nvim-web-devicons")
 
-  -- snippets
-  use("L3MON4D3/LuaSnip") -- snippet engine
-  use("saadparwaiz1/cmp_luasnip") -- for autocompletion
-  use("rafamadriz/friendly-snippets") -- useful snippets
+	-- statusline
+	use("nvim-lualine/lualine.nvim")
 
-  -- managing & installing lsp servers, linters & formatters
-  use("williamboman/mason.nvim") -- in charge of managing lsp servers, linters & formatters
-  use("williamboman/mason-lspconfig.nvim") -- bridges gap b/w mason & lspconfig
+	-- fuzzy finding w/ telescope
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependency for better sorting performance
+	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" }) -- fuzzy finder
 
-  -- configuring lsp servers
-  use("neovim/nvim-lspconfig") -- easily configure language servers
-  use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
-  use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
-  use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
-  use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
+	-- autocompletion
+	use("hrsh7th/nvim-cmp") -- completion plugin
+	use("hrsh7th/cmp-buffer") -- source for text in buffer
+	use("hrsh7th/cmp-path") -- source for file system paths
 
-  -- formatting & linting
-  use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
-  use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
-  -- finish
-  if packer_bootstarp then
-    require("packer").sync()
-  end
+	-- snippets
+	use("L3MON4D3/LuaSnip") -- snippet engine
+	use("saadparwaiz1/cmp_luasnip") -- for autocompletion
+	use("rafamadriz/friendly-snippets") -- useful snippets
+
+	-- managing & installing lsp servers, linters & formatters
+	use("williamboman/mason.nvim") -- in charge of managing lsp servers, linters & formatters
+	use("williamboman/mason-lspconfig.nvim") -- bridges gap b/w mason & lspconfig
+
+	-- configuring lsp servers
+	use("neovim/nvim-lspconfig") -- easily configure language servers
+	use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
+	use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
+	use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
+	use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
+
+	-- formatting & linting
+	use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
+	use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
+	-- finish
+	if packer_bootstarp then
+		require("packer").sync()
+	end
 end)

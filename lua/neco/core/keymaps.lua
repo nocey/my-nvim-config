@@ -2,15 +2,21 @@ vim.g.mapleader = " "
 
 local keymap = vim.keymap
 
-keymap.set("i" , "jk" , "<ESC>")
+keymap.set("i", "jk", "<ESC>")
 
-keymap.set("n" , "<leader>nh" , ":nogl<CR>")
-keymap.set("n" , "x" , "_x")
-keymap.set("n" , "<leader>-" , "<C-a>")
-keymap.set("n" , "<leader>+" , "<C-x>")
-keymap.set("n" , "<leader>," , "<C-w>v") -- make split windows vertically
-keymap.set("n" , "<leader><TAB>" , "<C-w>=") -- make split windows equal
-keymap.set("n" , "<leader>x" , ":close<CR>") -- close current split window
+keymap.set("n", "<leader>nh", ":nogl<CR>")
+keymap.set("n", "x", "_x")
+keymap.set("n", "<leader>-", "<C-a>")
+keymap.set("n", "<leader>+", "<C-x>")
+keymap.set("n", "<leader>,", "<C-w>v") -- make split windows vertically
+keymap.set("n", "<leader><TAB>", "<C-w>=") -- make split windows equal
+keymap.set("n", "<leader>x", ":close<CR>") -- close current split window
+keymap.set("n", "<leader>q", ":BufferClose<CR>") -- close current split window
+
+keymap.set("n", "<C-s>", ":w<CR>")
+
+keymap.set("n", "<C-n>", ":BufferNext<CR>")
+keymap.set("n", "<C-b>", ":BufferPrevious<CR>")
 
 keymap.set("n", "<TAB>t", ":tabnew<CR>") -- open new tab
 keymap.set("n", "<TAB>x", ":tabclose<CR>") -- close current tab
@@ -36,3 +42,4 @@ keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string u
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
 
+keymap.set("n", "<leader>l", ":LazyGit<CR>") -- open the LazyGit
