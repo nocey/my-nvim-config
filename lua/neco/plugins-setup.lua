@@ -35,9 +35,13 @@ return packer.startup(function(use)
 
 	use("nvim-treesitter/nvim-treesitter")
 
+	use("numToStr/FTerm.nvim")
+
 	use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
 
 	use("romgrk/barbar.nvim")
+
+	use("akinsho/toggleterm.nvim")
 
 	use("bluz71/vim-nightfly-guicolors") -- preferred colorscheme
 

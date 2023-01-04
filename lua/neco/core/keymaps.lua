@@ -33,7 +33,11 @@ keymap.set("n", "<leader>u", ":PackerUpdate<CR>")
 
 keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
 
+keymap.set("n", "<C-t>", ":FTermToggle<CR>")
+
 keymap.set("n", "<leader>d", '"_dd')
+
+keymap.set("n", "<C-/>", ":FTermToggle<CR>")
 
 -- telescope
 keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
