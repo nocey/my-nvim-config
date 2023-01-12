@@ -13,6 +13,8 @@ keymap.set("n", "<leader><TAB>", "<C-w>=") -- make split windows equal
 keymap.set("n", "<leader>x", ":close<CR>") -- close current split window
 keymap.set("n", "<leader>q", ":BufferClose<CR>") -- close current split window
 
+keymap.set("t", "<esc>", [[<C-\><C-n>]])
+
 keymap.set("n", "<C-s>", ":w<CR>")
 
 keymap.set("n", "<C-n>", ":BufferNext<CR>")
@@ -26,14 +28,13 @@ keymap.set("n", "<TAB>tp", ":tabp<CR>") --  go to previous tab
 -- -- -- -- -- -- --
 -- PLUGIN KEYBINDS
 -- -- -- -- -- -- --
-
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window maximization
 
 keymap.set("n", "<leader>u", ":PackerUpdate<CR>")
 
 keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
 
-keymap.set("n", "<C-t>", ":FTermToggle<CR>")
+keymap.set("n", "<leader>t", ":ToggleTerm<CR>")
 
 keymap.set("n", "<leader>d", '"_dd')
 
@@ -45,5 +46,3 @@ keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- find string in 
 keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string under cursor in current working directory
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
-
-keymap.set("n", "<leader>l", ":LazyGit<CR>") -- open the LazyGit

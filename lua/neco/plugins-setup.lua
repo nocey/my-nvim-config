@@ -37,6 +37,8 @@ return packer.startup(function(use)
 
 	use("numToStr/FTerm.nvim")
 
+	use("akinsho/toggleterm.nvim")
+
 	use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
 
 	use("romgrk/barbar.nvim")
